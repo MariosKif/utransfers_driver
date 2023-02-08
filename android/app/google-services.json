@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "372623080800",
+    "firebase_url": "https://utransferdb-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "utransferdb",
+    "storage_bucket": "utransferdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:372623080800:android:4e6cc2a783bd13c337b205",
+        "android_client_info": {
+          "package_name": "com.ubtt.utransfersdriver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "372623080800-lsunqndivbr2up6gs1p3ljetseitn7me.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWj0wkzH90jNzj-Bt2zGOm1TOEx7VkzWs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "372623080800-lsunqndivbr2up6gs1p3ljetseitn7me.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
