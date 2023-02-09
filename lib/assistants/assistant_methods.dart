@@ -12,15 +12,17 @@ import '../models/direction_details_info.dart';
 import '../models/directions.dart';
 import '../models/user_model.dart';
 
+
 class AssistantMethods
 {
-  static Future<String> searchAddressForGeographicCoOrdinated(Position position, context) async
+  static Future<String> searchAddressForGeographicCoOrdinates(Position position, context) async
   {
     String apiUrl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.latitude},${position.longitude}&key=$mapKey";
-    String humanReadableAddress = "";
+    String humanReadableAddress="";
 
     var requestResponse = await RequestAssistant.receiveRequest(apiUrl);
-    if(requestResponse != "Failed")
+
+    if(requestResponse != "Error Occurred, Failed. No Response.")
     {
       humanReadableAddress = requestResponse["results"][0]["formatted_address"];
 
@@ -32,10 +34,8 @@ class AssistantMethods
       Provider.of<AppInfo>(context, listen: false).updatePickUpLocationAddress(userPickUpAddress);
     }
 
-
     return humanReadableAddress;
   }
-
 
   static void readCurrentOnlineUserInfo() async
   {
@@ -51,20 +51,17 @@ class AssistantMethods
       if(snap.snapshot.value != null)
       {
         userModelCurrentInfo = UserModel.fromSnapshot(snap.snapshot);
-        //This is only for testing purpose
-        //print("name = " + userModelCurrentInfo!.name.toString());
-        //print("email = " + userModelCurrentInfo!.email.toString());
       }
     });
   }
 
-  static Future<DirectionDetailsInfo?> obtainOriginToDestinationDirectionDetails(LatLng originPosition, LatLng destinationPosition) async
+  static Future<DirectionDetailsInfo?> obtainOriginToDestinationDirectionDetails(LatLng origionPosition, LatLng destinationPosition) async
   {
-    String urlOriginToDestinationDirectionDetails = "https://maps.googleapis.com/maps/api/directions/json?origin=${originPosition.latitude},${originPosition.longitude}&destination=${destinationPosition.latitude},${destinationPosition.longitude}&key=$mapKey";
+    String urlOriginToDestinationDirectionDetails = "https://maps.googleapis.com/maps/api/directions/json?origin=${origionPosition.latitude},${origionPosition.longitude}&destination=${destinationPosition.latitude},${destinationPosition.longitude}&key=$mapKey";
 
     var responseDirectionApi = await RequestAssistant.receiveRequest(urlOriginToDestinationDirectionDetails);
 
-    if(responseDirectionApi == "Failed")
+    if(responseDirectionApi == "Error Occurred, Failed. No Response.")
     {
       return null;
     }

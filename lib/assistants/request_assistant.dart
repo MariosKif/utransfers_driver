@@ -10,9 +10,9 @@ class RequestAssistant
 
     try
     {
-      if(httpResponse.statusCode == 200) // successful Response
+      if(httpResponse.statusCode == 200) //successful
           {
-        String responseData = httpResponse.body; //json format
+        String responseData = httpResponse.body; //json
 
         var decodeResponseData = jsonDecode(responseData);
 
@@ -20,13 +20,12 @@ class RequestAssistant
       }
       else
       {
-        return "Error Occurred, Failed. No response";
+        return "Error Occurred, Failed. No Response.";
       }
     }
     catch(exp)
     {
-      return exp.toString() + "Failed";
+      return "Error Occurred, Failed. No Response.";
     }
-
   }
 }

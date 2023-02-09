@@ -19,4 +19,5 @@ class AppInfo extends ChangeNotifier
     userDropOffLocation = dropOffAddress;
     notifyListeners();
   }
+
 }
