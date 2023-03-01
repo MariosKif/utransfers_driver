@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:utransfers_driver/global/global.dart';
+import 'package:utransfers_driver/tabPages/ratings_tab.dart';
 
 import '../widgets/info_design_ui.dart';
 
@@ -83,20 +84,47 @@ class _ProfileTabPageState extends State<ProfileTabPage>
               height: 20,
             ),
 
-            ElevatedButton(
-              onPressed: ()
-              {
-                fAuth.signOut();
-                SystemNavigator.pop();
-              },
-              style: ElevatedButton.styleFrom(
-                primary: Colors.white54,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 90),
+              child: Row(
+                children: [
+
+                  ElevatedButton(
+                    onPressed: ()
+                    {
+                      Navigator.push(context, MaterialPageRoute(builder: (c)=> RatingsTabPage()));
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white54,
+                    ),
+                    child: const Text(
+                      "Ratings",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+
+                  const SizedBox(
+                    width: 20,
+                  ),
+
+                  ElevatedButton(
+                    onPressed: ()
+                    {
+                      fAuth.signOut();
+                      SystemNavigator.pop();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white54,
+                    ),
+                    child: const Text(
+                      "Logout",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
               ),
-              child: const Text(
-                "Logout",
-                style: TextStyle(color: Colors.white),
-              ),
-            )
+            ),
+
 
           ],
         ),

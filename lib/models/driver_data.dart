@@ -8,6 +8,7 @@ class DriverData
   String? car_color;
   String? car_model;
   String? car_number;
+  bool? checked;
 
   DriverData({
     this.id,
@@ -17,5 +18,6 @@ class DriverData
     this.car_color,
     this.car_model,
     this.car_number,
+    this.checked,
 });
 }

@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:utransfers_driver/tabPages/all_available_rides_tab.dart';
 
 import '../tabPages/earning_tab.dart';
 import '../tabPages/home_tab.dart';
 import '../tabPages/profile_tab.dart';
 import '../tabPages/ratings_tab.dart';
+import '../tabPages/all_available_rides_tab.dart';
 
 class MainScreen extends StatefulWidget
 {
   @override
   _MainScreenState createState() => _MainScreenState();
 }
-
-
-
 
 class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateMixin
 {
@@ -38,8 +37,8 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: TabBarView(
-        physics: const NeverScrollableScrollPhysics(),
+      body:  TabBarView(
+        physics:  NeverScrollableScrollPhysics(),
         controller: tabController,
         children: const [
           HomeTabPage(),

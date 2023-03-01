@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:utransfers_driver/models/all_available_rides_model.dart';
 
 import '../models/directions.dart';
 import '../models/trips_history_model.dart';
@@ -14,6 +15,8 @@ class AppInfo extends ChangeNotifier
   String driverAverageRatings = "0";
   List<String> historyTripsKeysList = [];
   List<TripsHistoryModel> allTripsHistoryInformationList = [];
+  List<String> allAvailableTripsKeysList = [];
+  List<AllAvailableRidesModel> allAvailableRideInformationList = [];
 
 
   void updatePickUpLocationAddress(Directions userPickUpAddress)
@@ -39,12 +42,30 @@ class AppInfo extends ChangeNotifier
     historyTripsKeysList = tripsKeysList;
     notifyListeners();
   }
+/*
+  updateAllAvailableRideTripsKeys(List<String> tripsKeysList)
+  {
+    allAvailableTripsKeysList = allAvailableTripsKeysList;
+    notifyListeners();
+  }
+  */
+
 
   updateOverAllTripsHistoryInformation(TripsHistoryModel eachTripHistory)
   {
     allTripsHistoryInformationList.add(eachTripHistory);
     notifyListeners();
   }
+
+  /*
+  //Later for the all ride tab
+  updateOverAllAvailableRideInformation(AllAvailableRidesModel eachAvailableTrip)
+  {
+    allAvailableRideInformationList.add(eachAvailableTrip);           //InformationList.add(eachTripHistory);
+    notifyListeners();
+  }
+
+   */
 
   updateDriverTotalEarnings(String driverEarnings)
   {

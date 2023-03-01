@@ -38,14 +38,6 @@ class _HomeTabPageState extends State<HomeTabPage>
   LocationPermission? _locationPermission;
 
 
-
-
-
-
-
-
-
-
   checkIfLocationPermissionAllowed() async
   {
     _locationPermission = await Geolocator.requestPermission();
@@ -91,14 +83,17 @@ class _HomeTabPageState extends State<HomeTabPage>
           onlineDriverData.car_color =(snap.snapshot.value as Map)["car_details"]["car_color"];
           onlineDriverData.car_model =(snap.snapshot.value as Map)["car_details"]["car_model"];
           onlineDriverData.car_number =(snap.snapshot.value as Map)["car_details"]["car_number"];
+          onlineDriverData.checked = (snap.snapshot.value as Map)["checked"];
 
           driverVehicleType =(snap.snapshot.value as Map)["car_details"]["type"];
+
 
 
           print("Car details ::");
           print(onlineDriverData.car_color);
           print(onlineDriverData.car_model);
           print(onlineDriverData.car_number);
+        //  print(onlineDriverData.checked);
         }
     });
 
@@ -160,32 +155,40 @@ class _HomeTabPageState extends State<HomeTabPage>
               ElevatedButton(
                 onPressed: ()
                 {
-                  if(isDriverActive != true) //offline
-                      {
-                    driverIsOnlineNow();
-                    updateDriversLocationAtRealTime();
 
-                    setState(() {
-                      statusText = "Now Online";
-                      isDriverActive = true;
-                      buttonColor = Colors.transparent;
-                    });
-
-                    //display Toast
-                    Fluttertoast.showToast(msg: "you are Online Now");
+                  if(onlineDriverData.checked != true) {
+                    print(onlineDriverData.checked);
+                    Fluttertoast.showToast(msg: "Please wait until we verify your documents.");
                   }
-                  else //online
-                      {
-                    driverIsOfflineNow();
+                  else{
 
-                    setState(() {
-                      statusText = "Now Offline";
-                      isDriverActive = false;
-                      buttonColor = Colors.grey;
-                    });
+                    if (isDriverActive != true) //offline
+                        {
+                      driverIsOnlineNow();
+                      updateDriversLocationAtRealTime();
 
-                    //display Toast
-                    Fluttertoast.showToast(msg: "you are Offline Now");
+                      setState(() {
+                        statusText = "Now Online";
+                        isDriverActive = true;
+                        buttonColor = Colors.transparent;
+                      });
+
+                      //display Toast
+                      Fluttertoast.showToast(msg: "you are Online Now");
+                    }
+                    else //online
+                        {
+                      driverIsOfflineNow();
+
+                      setState(() {
+                        statusText = "Now Offline";
+                        isDriverActive = false;
+                        buttonColor = Colors.grey;
+                      });
+
+                      //display Toast
+                      Fluttertoast.showToast(msg: "you are Offline Now");
+                    }
                   }
                 },
                 style: ElevatedButton.styleFrom(

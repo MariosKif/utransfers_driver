@@ -7,6 +7,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:utransfers_driver/assistants/request_assistant.dart';
+import 'package:utransfers_driver/models/all_available_rides_model.dart';
 
 import '../global/global.dart';
 import '../global/map_key.dart';
@@ -139,6 +140,7 @@ class AssistantMethods
 
         //get trips key data - read trips complete information
         readTripsHistoryInformation(context);
+       // readAllAvailableRideInformation(context);
 
       }
     });
@@ -205,4 +207,31 @@ class AssistantMethods
       }
     });
   }
+/*
+  static void readAllAvailableRideInformation(context)
+  {
+    var tripsAllKeys =  Provider.of<AppInfo>(context, listen: false).allAvailableTripsKeysList;
+
+    for(String eachKey in tripsAllKeys)
+    {
+      FirebaseDatabase.instance.ref()
+          .child("All Ride Requests")
+          .child(eachKey)
+          .once()
+          .then((snap)
+      {
+        var eachTrip =  AllAvailableRidesModel.fromSnapshot(snap.snapshot);
+
+        if((snap.snapshot.value as Map)["driverId"] == "waiting")
+        {
+          //Update-add each history to OverAllTrips History Data List
+          Provider.of<AppInfo>(context, listen: false).updateOverAllAvailableRideInformation(eachTrip);
+        }
+
+      });
+
+    }
+  }
+
+ */
 }
